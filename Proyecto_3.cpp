@@ -9,7 +9,7 @@
 #include <iostream>
 #include <windows.h>
 
-using namespace std;
+using namespace std; caca
 
 // Vector para la poblacion inicial
 int individuo[100][16];
