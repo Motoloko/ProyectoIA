@@ -60,18 +60,25 @@ int convadec(int n[16])
 	return decimal;
 }
 
-void convabin(int n)
+void convabin(float n)
 {
-	int inicio = 32768, i = 0;
+	float inicio = 32768, i = 0;
+	float residuo;
+	n++;
+	n = n / inicio;
 
 	while(i < 16){
-		if(n / inicio > 1){
-	    	convertido[i] = 1;
-	    	n = n - inicio;
-	    }
-	    i++;
-	    inicio = inicio / 2;
+		if(n > 1){
+			convertido[(int)i] = 1;
+			n = n - 1;
+		}
+		else{
+			convertido[(int)i] = 0;
+		}
+		n = n * 2;	
+		i++;
 	}
+	
 }
 
 void funAdaptacion(){
@@ -105,7 +112,7 @@ void funAdaptacion(){
 }
 
 void reproducir(int i, int j){
-	int hijo1[16]; hijo2[16];
+	int hijo1[16], hijo2[16];
 	
 	int punto = rand()%14+2;
 	printf("%d\n", punto);
