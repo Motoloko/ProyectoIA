@@ -36,6 +36,7 @@ void poblacionInicial(){
 }
 
 void mostrarIndividuos(){
+	printf("=============INDIVIDUOS=============\n");
 	for(int i=0 ; i<100 ; i++){
 
 		printf("Individuo %d:\t [",i+1);
@@ -75,7 +76,7 @@ void convabin(int n)
 
 void funAdaptacion(){
 	int funcion = 0;
-
+	printf("\n=============INDIVIDUOS TRADUCIDOS=============\n");
 	for(int i=0 ; i<100 ; i++){
 		indDec[i] = convadec(individuo[i]);
 		printf("Individuo decimal [%i]: %d\n",i+1,indDec[i]);
@@ -91,7 +92,7 @@ void funAdaptacion(){
 	{
 		printf("%d",convertido[i]);
 	}
-	printf("\n");
+	printf(" en decimal es: %d\n",convadec(convertido));
 
 	for(int i = 1 ; i<16 ; i++)
 	{
@@ -103,9 +104,18 @@ void funAdaptacion(){
 
 }
 
+void reproducir(int i, int j){
+	int hijo1[16]; hijo2[16];
+	
+	int punto = rand()%14+2;
+	printf("%d\n", punto);
+
+}
+
 int main(){	
 	poblacionInicial();
 	mostrarIndividuos();
+	system("pause");
 	limpiarconvertido();
 	funAdaptacion();
 	system("pause");
