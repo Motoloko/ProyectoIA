@@ -63,14 +63,14 @@ void convabin(int n)
 {
 	int inicio = 32768, i = 0;
 
-	do{
-		if(n % inicio != 0){
+	while(i < 16){
+		if(n / inicio > 1){
 	    	convertido[i] = 1;
 	    	n = n - inicio;
 	    }
 	    i++;
 	    inicio = inicio / 2;
-	}while(inicio != 1);
+	}
 
     
 
