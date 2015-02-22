@@ -4,6 +4,7 @@
 
 using namespace std;
 
+	
 int main()
 {
 
@@ -14,7 +15,7 @@ int main()
 	{
     array[i] = number % 10;
     number /= 10;
-}
+	}
 
     for (int i = 0; i < 16; ++i)
     {
