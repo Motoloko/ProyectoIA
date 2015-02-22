@@ -1,4 +1,4 @@
-/*
+/* TROLOLOLOLOLOLO
 	Proyecto No. 3
 	Algoritmos Genéticos
 	Equipo:
