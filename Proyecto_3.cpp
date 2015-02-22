@@ -71,11 +71,6 @@ void convabin(int n)
 	    i++;
 	    inicio = inicio / 2;
 	}
-
-    
-
-
-
 }
 
 void funAdaptacion(){
