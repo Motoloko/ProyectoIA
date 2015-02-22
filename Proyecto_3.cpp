@@ -8,6 +8,10 @@
 */
 #include <iostream>
 #include <windows.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <time.h>
 
 using namespace std;
 
@@ -37,7 +41,23 @@ void mostrarIndividuos(){
 	}
 }
 
+void convabin(int n)
+{
+    if (n / 2 != 0) {
+        convabin(n / 2);
+    }
+    printf("%d", n % 2);
+}
+
 int main(){
+	int x;
+
+	cout<<"\n\t\tDame un numero:  ";
+	cin >> x;
+	convabin(x);
+	
+	getch();
+	
 	poblacionInicial();
 	mostrarIndividuos();
 	system("pause");
