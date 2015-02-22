@@ -16,7 +16,13 @@
 using namespace std;
 
 // Vector para la poblacion inicial
-int individuo[100][16];
+int individuo[100][16], convertido[16];
+
+void limpiarconvertido(){
+	for(int i=0 ; i < 16 ; i++){
+		convertido[i] = 0;
+	}
+}
 
 void poblacionInicial(){
 	srand(time(NULL));
@@ -53,18 +59,28 @@ int convadec(int n[16])
 	return decimal;
 }
 
-int convabin(int n)
+int convabin(int n,int vuelta)
 {
     if (n / 2 != 0) {
-        convabin(n / 2);
+        convabin(n / 2, vuelta+1);
     }
     n=n%2;
+    // printf("%d\n",n );
+    convertido[vuelta] = n;
     return n;
 }
 
 int main(){
 	
-	poblacionInicial();
-	mostrarIndividuos();
+
+	printf("original: 15 || Convertido: %d\n",convabin(15,0) );
+
+	for (int i = 0; i < 16; ++i)
+	{
+		printf("%d",convertido[i] );
+	}
+	printf("\n");
+	//poblacionInicial();
+	//mostrarIndividuos();
 	system("pause");
 }
