@@ -16,7 +16,7 @@
 using namespace std;
 
 // Vector para la poblacion inicial
-int individuo[100][16], convertido[16],indDec[100];
+int individuo[100][16], convertido[16],indDec[100], conjuntosOp = 0;
 
 void limpiarconvertido(){
 	for(int i=0 ; i < 16 ; i++){
@@ -75,6 +75,7 @@ void convabin(int n)
 
 void funAdaptacion(){
 	int funcion = 0;
+
 	for(int i=0 ; i<100 ; i++){
 		indDec[i] = convadec(individuo[i]);
 		printf("Individuo decimal [%i]: %d\n",i+1,indDec[i]);
@@ -91,6 +92,15 @@ void funAdaptacion(){
 		printf("%d",convertido[i]);
 	}
 	printf("\n");
+
+	for(int i = 1 ; i<16 ; i++)
+	{
+		if(convertido[i-1] == convertido[i] && convertido[i+1] != convertido[i])
+			conjuntosOp++;
+	}
+
+	printf("El conjunto optimo debera tener %d conjuntos\n",conjuntosOp);
+
 }
 
 int main(){	
