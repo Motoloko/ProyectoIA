@@ -59,14 +59,23 @@ int convadec(int n[16])
 	return decimal;
 }
 
-void convabin(int n,int vuelta)
+void convabin(int n)
 {
-    if (n / 2 != 0) {
-        convabin(n / 2, vuelta+1);
-    }
-    n=n%2;
-    // printf("%d\n",n );
-    convertido[vuelta] = n;
+	int inicio = 32768, i = 0;
+
+	do{
+		if(n % inicio != 0){
+	    	convertido[i] = 1;
+	    	n = n - inicio;
+	    }
+	    i++;
+	    inicio = inicio / 2;
+	}while(inicio != 1);
+
+    
+
+
+
 }
 
 void funAdaptacion(){
@@ -80,7 +89,7 @@ void funAdaptacion(){
 	funcion = funcion / 100;
 	printf("La funcion de adaptacion es: %d\n",funcion );
 
-	convabin(funcion,0);
+	convabin(funcion);
 
 	for (int i = 0; i < 16; i++)
 	{
@@ -92,6 +101,7 @@ void funAdaptacion(){
 int main(){	
 	poblacionInicial();
 	mostrarIndividuos();
+	limpiarconvertido();
 	funAdaptacion();
 	system("pause");
 }
