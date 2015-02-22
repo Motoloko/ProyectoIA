@@ -5,5 +5,3 @@ void findelmundo(){
 	printf("adios!!\n");
 }
 
-int main(){
-}
