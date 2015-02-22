@@ -16,7 +16,7 @@
 using namespace std;
 
 // Vector para la poblacion inicial
-int individuo[100][16], convertido[16];
+int individuo[100][16], convertido[16],indDec[100];
 
 void limpiarconvertido(){
 	for(int i=0 ; i < 16 ; i++){
@@ -59,7 +59,7 @@ int convadec(int n[16])
 	return decimal;
 }
 
-int convabin(int n,int vuelta)
+void convabin(int n,int vuelta)
 {
     if (n / 2 != 0) {
         convabin(n / 2, vuelta+1);
@@ -67,20 +67,31 @@ int convabin(int n,int vuelta)
     n=n%2;
     // printf("%d\n",n );
     convertido[vuelta] = n;
-    return n;
 }
 
-int main(){
-	
+void funAdaptacion(){
+	int funcion = 0;
+	for(int i=0 ; i<100 ; i++){
+		indDec[i] = convadec(individuo[i]);
+		printf("Individuo decimal [%i]: %d\n",i+1,indDec[i]);
+		funcion = funcion + indDec[i];		
+	}
 
-	printf("original: 15 || Convertido: %d\n",convabin(15,0) );
+	funcion = funcion / 100;
+	printf("La funcion de adaptacion es: %d\n",funcion );
 
-	for (int i = 0; i < 16; ++i)
+	convabin(funcion,0);
+
+	for (int i = 0; i < 16; i++)
 	{
-		printf("%d",convertido[i] );
+		printf("%d",convertido[i]);
 	}
 	printf("\n");
-	//poblacionInicial();
-	//mostrarIndividuos();
+}
+
+int main(){	
+	poblacionInicial();
+	mostrarIndividuos();
+	funAdaptacion();
 	system("pause");
 }
