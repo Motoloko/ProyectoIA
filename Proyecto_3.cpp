@@ -40,10 +40,16 @@ void poblacionInicial(){
 void mostrarIndividuos(){
 	printf("=============INDIVIDUOS=============\n");
 	for(int i=0 ; i<100 ; i++){
+		SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),15);
 
 		printf("Individuo %d:\t [",i+1);
 
 		for(int j=0 ; j<16 ; j++){
+			if(individuo[i][j]==1)
+				SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),12);
+			else
+				SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),15);
+			SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),15);
 			printf("%d,",individuo[i][j]);
 		}
 		printf("]\n");
