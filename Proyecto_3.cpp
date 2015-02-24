@@ -13,12 +13,12 @@
 #include <conio.h>
 #include <time.h>
 
-#define generaciones 5 // cantidad de generaciones a generar
+#define generaciones 35 // cantidad de generaciones a generar
 
 using namespace std;
 
 // Vector para la poblacion inicial
-int individuo[100][16], convertido[16],indDec[100], conjuntosOp = 0, hijos[20][2][16], padresUsados[2][20], conjuntos = 0, noConjOp = 0;
+int individuo[100][16], convertido[16],indDec[100], conjuntosOp = 0, hijos[20][2][16], padresUsados[2][20], conjuntos = 0, noConjOp = 0, conOps[100][16],;
 
 void limpiarconvertido(){
 	for(int i=0 ; i < 16 ; i++){
@@ -210,8 +210,17 @@ void cruzaAzar(){
 
 }
 
+//en construccion
+void cruzarOptimos(){
+	int cantidad, divisor = noConjOp % 2;
+	if(divisor != 0)
+		cantidad = noConjOp - 1;
+
+	
+}
+
 void calAgru(){
-	int conOp[16], conOps[100][16], i, j;
+	int conOp[16], i, j;
 	
 	for (i = 0; i < 100; i++){
 		for (j = 0; j < 16; j++){
@@ -249,6 +258,7 @@ void calAgru(){
 			printf("%d", conOps[i][j]);
 		}
 	}
+	printf("\n");
 }
 
 int main(){	
@@ -259,10 +269,6 @@ int main(){
 	limpiarconvertido();
 	funAdaptacion();
 	system("pause");
-
-	mostrarIndividuos();
-	calAgru();
-	system("pause");
 	
 	for(int i=0 ; i<generaciones; i++){
 		printf("\nGeneracion %d\n", i+1);
@@ -271,5 +277,7 @@ int main(){
 	system("pause");
 
 	mostrarIndividuos();
+	system("pause");
+	calAgru();
 	system("pause");
 }
