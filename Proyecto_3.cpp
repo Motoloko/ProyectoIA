@@ -49,9 +49,10 @@ void mostrarIndividuos(){
 				SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),12);
 			else
 				SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),15);
-			SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),15);
+			
 			printf("%d,",individuo[i][j]);
 		}
+		SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),15);
 		printf("]\n");
 	}
 }
