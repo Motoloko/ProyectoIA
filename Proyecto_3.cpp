@@ -18,7 +18,7 @@
 using namespace std;
 
 // Vector para la poblacion inicial
-int individuo[100][16], convertido[16],indDec[100], conjuntosOp = 0, hijos[20][2][16], padresUsados[2][20];
+int individuo[100][16], convertido[16],indDec[100], conjuntosOp = 0, hijos[20][2][16], padresUsados[2][20], conjuntos = 0, noConjOp = 0;
 
 void limpiarconvertido(){
 	for(int i=0 ; i < 16 ; i++){
@@ -209,6 +209,47 @@ void cruzaAzar(){
 
 }
 
+void calAgru(){
+	int conOp[16], conOps[100][16], i, j;
+	
+	for (i = 0; i < 100; i++){
+		for (j = 0; j < 16; j++){
+			conOps[i][j]=2;
+		}
+	}
+
+	printf("\n\n");
+	for(i=0 ; i<100 ; i++){
+		printf("Individuo %d ", i+1);
+		for(j = 1; j < 16 ; j++){
+			if (individuo[i][j-1] == individuo[i][j] && individuo[i][j+1] != individuo[i][j-1]){
+				conjuntos++;
+			}
+		}
+		printf("tiene %d agrupaciones\n", conjuntos);
+		if (conjuntos == conjuntosOp){
+			for (int k = 0; k < 16; k++){
+				conOp[k] = individuo[i][k];
+			}
+			for (int a = noConjOp; a < noConjOp+1; a++){
+				for (int b = 0; b < 16; b++){
+					conOps[a][b]=conOp[b];
+				}
+			}
+			noConjOp++;
+		}
+		conjuntos=0;
+	}
+	printf("\n\nHay %d conjuntos optimos", noConjOp);
+	printf("\n\nConjuntos Optimos\n\n");
+	for (i = 0; i < noConjOp; i++){
+		printf("\n%d.- ", i+1);
+		for (j = 0; j < 16; j++){
+			printf("%d", conOps[i][j]);
+		}
+	}
+}
+
 int main(){	
 	poblacionInicial();
 	mostrarIndividuos();
@@ -217,8 +258,11 @@ int main(){
 	limpiarconvertido();
 	funAdaptacion();
 	system("pause");
-	
 
+	mostrarIndividuos();
+	calAgru();
+	system("pause");
+	
 	for(int i=0 ; i<generaciones; i++){
 		printf("\nGeneracion %d\n", i+1);
 		cruzaAzar();
